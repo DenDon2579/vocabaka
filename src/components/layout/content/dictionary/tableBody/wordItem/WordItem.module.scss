@@ -1,0 +1,83 @@
+.wordItem {
+    margin-top: 8px;
+    display: grid;
+    grid-template-columns: 425px 425px 195px;
+    grid-column-gap: 35px;
+    animation: enter 1s;
+    position: relative;
+    align-items: center;
+}
+
+.block {
+    animation: enterWord 0.5s;
+    border-radius: 10px;
+    background-color: #add2c9;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 2px 2px 5px #5ea3a33a;
+    span {
+        color: #522d36;
+        font-size: 14px;
+        font-weight: 500;
+    }
+    transition: all 0.25s;
+    &:hover {
+        scale: 0.95;
+        background-color: #5ea3a3;
+        span {
+            color: #faf9f9;
+        }
+    }
+}
+
+.word {
+    cursor: pointer;
+}
+
+.translate {
+}
+
+.level {
+}
+
+@keyframes enter {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes enterWord {
+    0% {
+        scale: 1;
+        opacity: 1;
+    }
+    50% {
+        scale: 0.95;
+        opacity: 0.8;
+    }
+    100% {
+        scale: 1;
+        opacity: 1;
+    }
+}
+
+.delete {
+    cursor: pointer;
+    position: absolute;
+    right: -20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(241, 88, 88);
+    font-size: 12px;
+    opacity: 0.4;
+    transition: opacity 0.5s;
+    &:hover {
+        opacity: 1;
+    }
+}

@@ -1,0 +1,36 @@
+.wrapper {
+    width: 100%;
+    height: calc(100vh - 50px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    h2 {
+        font-weight: 500;
+    }
+}
+
+.login {
+    width: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button {
+    cursor: pointer;
+    background-color: #5ea3a3;
+    border: none;
+    width: 150px;
+    height: 40px;
+    color: #faf9f9;
+    font-size: 18px;
+    outline: none;
+    border-radius: 5px;
+    transition: all 0.25s;
+    &:hover {
+        border: 1px solid #5ea3a3;
+        background-color: #faf9f9;
+        color: #5ea3a3;
+    }
+}

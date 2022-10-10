@@ -1,0 +1,18 @@
+.content {
+    margin: auto;
+    width: 1115px;
+    height: calc(100% - 50px);
+    background-color: #faf9f9;
+    animation: enter 0.5s;
+}
+
+@keyframes enter {
+    0% {
+        scale: 0;
+        opacity: 0;
+    }
+    100% {
+        scale: 1;
+        opacity: 1;
+    }
+}

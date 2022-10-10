@@ -1,0 +1,118 @@
+.header {
+    width: 100%;
+    height: 50px;
+    background-color: #488c8f;
+    display: flex;
+    justify-content: center;
+    animation: enter 0.5s;
+}
+
+.main {
+    height: 100%;
+    width: 1115px;
+    display: grid;
+    align-items: center;
+    grid-template-columns: 460px 460px 195px;
+}
+
+.logo {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    .title {
+        letter-spacing: 2px;
+        color: #faf9f9;
+        font-size: 24px;
+        text-decoration: none;
+        transition: 0.25s all;
+        text-shadow: 2px 4px 6px rgba(0, 0, 0, 0.521);
+        &:hover {
+            letter-spacing: 5px;
+            color: #c0ebe0;
+        }
+        animation: logoEnter 0.5s;
+    }
+}
+
+.test {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    .link {
+        color: #faf9f9;
+        font-size: 20px;
+        text-decoration: none;
+    }
+}
+
+.microProfile {
+    width: 100%;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    img {
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+    }
+    span {
+        color: #faf9f9;
+        font-size: 18px;
+        margin-left: 10px;
+        display: flex;
+        align-items: center;
+        b {
+            cursor: pointer;
+            margin-left: 5px;
+            font-size: 10px;
+        }
+    }
+    animation: mpEnter 0.5s;
+}
+
+.button {
+    border-radius: 5px;
+    color: #faf9f9;
+    font-size: 16px;
+    background: none;
+    padding: 5px;
+    border: 1px solid #faf9f9;
+    cursor: pointer;
+    transition: all 0.25s;
+    &:hover {
+        background: #faf9f9;
+        color: #488c8f;
+    }
+    animation: enter 0.5s;
+}
+
+@keyframes mpEnter {
+    0% {
+        scale: 0;
+    }
+    100% {
+        scale: 1;
+    }
+}
+
+@keyframes enter {
+    0% {
+        transform: translateY(-100px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes logoEnter {
+    0% {
+        letter-spacing: 100px;
+    }
+    100% {
+        letter-spacing: 2px;
+    }
+}
