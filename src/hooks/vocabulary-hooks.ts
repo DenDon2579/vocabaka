@@ -1,7 +1,7 @@
-import { child, get, push, ref, remove, update } from 'firebase/database';
+import { child, get, increment, query, ref, update } from 'firebase/database';
 import { database } from '../firebase';
 import { setWords } from '../store/vocabularySlice';
-import { IWordData } from '../types';
+import { IUpdate, IWordData } from '../types';
 import { useAppDispatch, useAppSelector } from './redux-hooks';
 
 export const useVoc = () => {
@@ -9,13 +9,10 @@ export const useVoc = () => {
     const uid = useAppSelector((state) => state.userSlice.userData?.userID);
     return {
         addWord(data: IWordData) {
-            interface update {
-                [key: string]: IWordData;
-            }
-
-            const updates: update = {};
+            const updates: IUpdate = {};
 
             updates[`/users/${uid}/words/${data.id}`] = data;
+            updates[`/users/${uid}/userData/wordsCount`] = increment(1);
             update(ref(database), updates).then(() => {
                 this.loadWords();
             });
@@ -34,11 +31,9 @@ export const useVoc = () => {
                 });
         },
         deleteWord(id: number) {
-            interface update {
-                [key: string]: null;
-            }
-            const updates: update = {};
+            const updates: IUpdate = {};
             updates[`/users/${uid}/words/${id}`] = null;
+            updates[`/users/${uid}/userData/wordsCount`] = increment(-1);
             update(ref(database), updates);
         },
     };

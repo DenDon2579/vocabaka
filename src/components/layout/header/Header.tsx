@@ -31,11 +31,16 @@ const Header: React.FC = () => {
                 </div>
                 {isAuth ? (
                     <div className={classes.microProfile}>
-                        <img src={userData?.photoURL} alt='avatar' />
-                        <span>
-                            {userData?.displayName}{' '}
-                            <b onClick={() => dispatch(logOut())}>╳</b>
-                        </span>
+                        <Link to='profile' className={classes.mpLink}>
+                            <img src={userData?.photoURL} alt='avatar' />
+                            <span>{userData?.displayName} </span>
+                        </Link>
+                        <b
+                            className={classes.logOut}
+                            onClick={() => dispatch(logOut())}
+                        >
+                            ╳
+                        </b>
                     </div>
                 ) : (
                     <div className={classes.login}>

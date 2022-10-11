@@ -10,3 +10,7 @@ export interface IWordData {
     level: number;
     id: number;
 }
+
+export interface IUpdate {
+    [key: string]: any;
+}

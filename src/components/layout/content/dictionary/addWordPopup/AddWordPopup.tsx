@@ -12,10 +12,16 @@ const AddWordPopup: React.FC = () => {
     });
     const voc = useVoc();
     const wordChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        setFormData((prev) => ({ ...prev, word: e.target.value }));
+        setFormData((prev) => ({
+            ...prev,
+            word: e.target.value.toLowerCase(),
+        }));
     };
     const translateChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        setFormData((prev) => ({ ...prev, translation: e.target.value }));
+        setFormData((prev) => ({
+            ...prev,
+            translation: e.target.value.toLowerCase(),
+        }));
     };
     const levelChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setFormData((prev) => ({ ...prev, level: +e.target.value }));
@@ -48,6 +54,7 @@ const AddWordPopup: React.FC = () => {
                         className={classes.word}
                         value={formData.word}
                         onChange={wordChangeHandler}
+                        autoFocus
                         required
                     />
                     <label>Введите перевод слова или фразы</label>

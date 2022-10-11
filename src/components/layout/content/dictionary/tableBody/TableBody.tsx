@@ -12,6 +12,7 @@ const TableBody: React.FC = () => {
     const voc = useVoc();
     useEffect(() => {
         voc.loadWords();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
     const dispatch = useAppDispatch();
     const words = useAppSelector((state) => state.vocabularySlice.words);

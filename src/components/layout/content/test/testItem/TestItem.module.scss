@@ -1,0 +1,49 @@
+.card {
+    width: auto;
+    height: auto;
+    border-radius: 10px;
+    border: 1px solid #5ea3a3;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.top {
+    box-sizing: border-box;
+    padding: 10px;
+    width: 100%;
+    height: 110px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    border-bottom: 1px solid #5ea3a3;
+    span {
+        font-size: 18px;
+    }
+    .text {
+    }
+    .word {
+        font-weight: 500;
+    }
+    .lang {
+    }
+}
+
+.bot {
+    width: 100%;
+    height: 50%;
+}
+
+.input {
+    border: none;
+    box-sizing: border-box;
+    width: 100%;
+    height: 38px;
+    background: none;
+    font-size: 18px;
+    outline: none;
+    padding: 10px;
+    text-align: center;
+    transition: all 0.25s;
+}

@@ -36,11 +36,11 @@
     cursor: pointer;
 }
 
-.translate {
-}
+// .translate {
+// }
 
-.level {
-}
+// .level {
+// }
 
 @keyframes enter {
     0% {
@@ -76,7 +76,7 @@
     color: rgb(241, 88, 88);
     font-size: 12px;
     opacity: 0.4;
-    transition: opacity 0.5s;
+    transition: all 0.5s;
     &:hover {
         opacity: 1;
     }

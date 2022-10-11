@@ -70,6 +70,10 @@
         border-radius: 5px;
         outline: none;
         padding: 10px;
+        transition: all 0.25s;
+        &:focus {
+            border: 1px solid #522d36;
+        }
     }
     input[type='range'] {
         border: none;
@@ -78,6 +82,19 @@
         -webkit-appearance: none;
         width: 100%;
         margin: 0;
+        border-radius: 0;
+
+        &:focus {
+            &::-webkit-slider-runnable-track {
+                background: #522d3675;
+            }
+            &::-moz-range-track {
+                background: #522d3675;
+            }
+            &::-ms-track {
+                background: #522d3675;
+            }
+        }
     }
     input[type='range']:focus {
         outline: none;
@@ -148,6 +165,11 @@
         border-radius: 5px;
         transition: all 0.25s;
         &:hover {
+            border: 1px solid #5ea3a3;
+            background-color: #faf9f9;
+            color: #5ea3a3;
+        }
+        &:focus {
             border: 1px solid #5ea3a3;
             background-color: #faf9f9;
             color: #5ea3a3;

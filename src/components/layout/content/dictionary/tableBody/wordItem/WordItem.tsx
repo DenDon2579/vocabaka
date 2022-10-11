@@ -1,5 +1,4 @@
 import React from 'react';
-import { workerData } from 'worker_threads';
 import { IWordData } from '../../../../../../types';
 import classes from './WordItem.module.scss';
 

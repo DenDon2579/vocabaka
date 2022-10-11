@@ -4,6 +4,8 @@ import { useAppSelector } from '../../../hooks/redux-hooks';
 import classes from './Content.module.scss';
 import Dictionary from './dictionary/Dictionary';
 import Login from './login/Login';
+import Profile from './profile/Profile';
+import Test from './test/Test';
 
 const Content: React.FC = () => {
     const isAuth = useAppSelector((state) => state.userSlice.authData.isAuth);
@@ -27,6 +29,14 @@ const Content: React.FC = () => {
                 <Route
                     path='dictionary'
                     element={isAuth ? <Dictionary /> : <Navigate to='/login' />}
+                />
+                <Route
+                    path='profile'
+                    element={isAuth ? <Profile /> : <Navigate to='/login' />}
+                />
+                <Route
+                    path='test'
+                    element={isAuth ? <Test /> : <Navigate to='/login' />}
                 />
             </Routes>
         </div>
