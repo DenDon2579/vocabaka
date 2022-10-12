@@ -71,34 +71,19 @@ function groupeWords(words: IWordData[], wordsCount: number) {
             amountForTest: number;
         };
     }
-    const groupedWords: IGroups =
-        wordsCount < 30
-            ? {
-                  0: { words: [], amountForTest: 4 },
-                  10: { words: [], amountForTest: 4 },
-                  20: { words: [], amountForTest: 4 },
-                  30: { words: [], amountForTest: 4 },
-                  40: { words: [], amountForTest: 3 },
-                  50: { words: [], amountForTest: 3 },
-                  60: { words: [], amountForTest: 2 },
-                  70: { words: [], amountForTest: 2 },
-                  80: { words: [], amountForTest: 2 },
-                  90: { words: [], amountForTest: 1 },
-                  100: { words: [], amountForTest: 1 },
-              }
-            : {
-                  0: { words: [], amountForTest: 2 },
-                  10: { words: [], amountForTest: 2 },
-                  20: { words: [], amountForTest: 3 },
-                  30: { words: [], amountForTest: 4 },
-                  40: { words: [], amountForTest: 4 },
-                  50: { words: [], amountForTest: 4 },
-                  60: { words: [], amountForTest: 4 },
-                  70: { words: [], amountForTest: 3 },
-                  80: { words: [], amountForTest: 2 },
-                  90: { words: [], amountForTest: 1 },
-                  100: { words: [], amountForTest: 1 },
-              };
+    const groupedWords: IGroups = {
+        0: { words: [], amountForTest: 2 },
+        10: { words: [], amountForTest: 2 },
+        20: { words: [], amountForTest: 2 },
+        30: { words: [], amountForTest: 2 },
+        40: { words: [], amountForTest: 3 },
+        50: { words: [], amountForTest: 2 },
+        60: { words: [], amountForTest: 2 },
+        70: { words: [], amountForTest: 2 },
+        80: { words: [], amountForTest: 1 },
+        90: { words: [], amountForTest: 1 },
+        100: { words: [], amountForTest: 1 },
+    };
 
     words.forEach((wordData) => {
         groupedWords[wordData.level].words = [
