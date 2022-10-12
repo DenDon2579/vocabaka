@@ -35,7 +35,7 @@ const ResultItem: React.FC<IProps> = ({ word }) => {
             </div>
 
             <div className={classes.block}>
-                <span className={classes.property}>Изменения</span>
+                <span className={classes.property}>Прогресс</span>
                 <div className={classes.changes}>
                     <div className={classes.level}>{word.level}%</div>
                     <span className={classes.arrow}>➝</span>

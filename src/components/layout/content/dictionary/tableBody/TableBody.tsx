@@ -5,17 +5,22 @@ import {
 } from '../../../../../hooks/redux-hooks';
 import { useVoc } from '../../../../../hooks/vocabulary-hooks';
 import { showPopup } from '../../../../../store/visualSlice';
+import { IWordData } from '../../../../../types';
 import classes from './TableBody.module.scss';
 import WordItem from './wordItem/WordItem';
 
-const TableBody: React.FC = () => {
+interface IProps {
+    words: IWordData[] | null;
+}
+
+const TableBody: React.FC<IProps> = ({ words }) => {
     const voc = useVoc();
     useEffect(() => {
         voc.loadWords();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
     const dispatch = useAppDispatch();
-    const words = useAppSelector((state) => state.vocabularySlice.words);
+
     const remove = (id: number) => {
         voc.deleteWord(id);
         voc.loadWords();
