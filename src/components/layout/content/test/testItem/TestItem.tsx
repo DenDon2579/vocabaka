@@ -5,11 +5,11 @@ import React, {
     useEffect,
     useState,
 } from 'react';
-import { IWordData } from '../../../../../types';
+import { ITestWordData, IWordData } from '../../../../../types';
 import classes from './TestItem.module.scss';
 
 interface IProps {
-    word: IWordData;
+    word: ITestWordData;
     sendAnswer: (id: number, answer: string) => void;
 }
 
@@ -42,7 +42,7 @@ const TestItem: React.FC<IProps> = ({ word, sendAnswer }) => {
         <div className={classes.card}>
             <div className={classes.top}>
                 <span className={classes.text}>Переведите</span>
-                <span className={classes.word}>{word.word}</span>
+                <span className={classes.word}>«{word.word}»</span>
                 <span className={classes.lang}>на русский</span>
             </div>
             <div className={classes.bot}>

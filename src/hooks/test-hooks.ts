@@ -1,8 +1,8 @@
 import { child, get, increment, ref, update } from 'firebase/database';
 import { database } from '../firebase';
 import { randomInteger } from '../funcs';
-import { setTestWords, setWordsCount } from '../store/testSlice';
-import { IUpdate, IWordData } from '../types';
+import { setResults, setTestWords, setWordsCount } from '../store/testSlice';
+import { ITestWordData, IUpdate, IWordData } from '../types';
 import { useAppDispatch, useAppSelector } from './redux-hooks';
 import { useVoc } from './vocabulary-hooks';
 
@@ -10,8 +10,9 @@ export const useTest = () => {
     const uid = useAppSelector((state) => state.userSlice.userData?.userID);
     const dispatch = useAppDispatch();
     const words = useAppSelector((state) => state.vocabularySlice.words);
+    const testWords = useAppSelector((state) => state.testSlice.words);
     const voc = useVoc();
-    const answers = useAppSelector((state) => state.testSlice.answers);
+
     return {
         createTest() {
             get(child(ref(database), `users/${uid}/userData/wordsCount`))
@@ -19,6 +20,7 @@ export const useTest = () => {
                     if (snapshot.exists() && words?.length) {
                         const wordsCount = snapshot.val();
                         const test = composeTest(words, wordsCount);
+
                         dispatch(setWordsCount(wordsCount));
                         dispatch(setTestWords(test));
                     }
@@ -30,17 +32,31 @@ export const useTest = () => {
         endTest() {
             const updates: IUpdate = {};
 
-            for (let [id, answer] of Object.entries(answers)) {
-                console.log(id, answer);
-                const word = words?.find((word) => word.id === +id);
+            const results = testWords.map((word) => {
+                const wordData = { ...word };
+                if (word.answer === word.translation) {
+                    wordData.isRight = true;
+                    if (word.level <= 90) {
+                        updates[`/users/${uid}/words/${word.id}/level`] =
+                            increment(10);
+                        wordData.changes = 10;
+                    } else {
+                        wordData.changes = 0;
+                    }
+                } else {
+                    wordData.isRight = false;
 
-                if (word && word.translation === answer && word.level <= 90) {
-                    updates[`/users/${uid}/words/${id}/level`] = increment(10);
-                } else if (word && word.level >= 10) {
-                    updates[`/users/${uid}/words/${id}/level`] = increment(-10);
+                    if (word.level >= 10) {
+                        updates[`/users/${uid}/words/${word.id}/level`] =
+                            increment(-10);
+                        wordData.changes = -10;
+                    } else {
+                        wordData.changes = 0;
+                    }
                 }
-            }
-
+                return wordData;
+            });
+            dispatch(setResults(results));
             update(ref(database), updates).then(() => {
                 voc.loadWords();
             });
@@ -50,7 +66,7 @@ export const useTest = () => {
 
 function composeTest(words: IWordData[], wordsCount: number) {
     interface IWords {
-        words: IWordData[];
+        words: ITestWordData[];
         amountForTest: number;
     }
     const groupedWords = groupeWords(words, wordsCount);
@@ -67,7 +83,7 @@ function composeTest(words: IWordData[], wordsCount: number) {
 function groupeWords(words: IWordData[], wordsCount: number) {
     interface IGroups {
         [key: number]: {
-            words: IWordData[];
+            words: ITestWordData[];
             amountForTest: number;
         };
     }
@@ -101,9 +117,15 @@ function groupeWords(words: IWordData[], wordsCount: number) {
               };
 
     words.forEach((wordData) => {
+        const word: ITestWordData = {
+            ...wordData,
+            answer: '',
+            isRight: null,
+            changes: null,
+        };
         groupedWords[wordData.level].words = [
             ...groupedWords[wordData.level].words,
-            wordData,
+            word,
         ];
     });
 

@@ -1,25 +1,21 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { IUser, IWordData } from '../types';
+import { ITestWordData, IUser, IWordData } from '../types';
 
 interface IState {
-    words: IWordData[];
+    words: ITestWordData[];
     wordsCount: number;
-    answers: {
-        [key: number]: string;
-    };
 }
 
 const initialState: IState = {
     wordsCount: 0,
     words: [],
-    answers: {},
 };
 
 const testSlice = createSlice({
     name: 'test',
     initialState: initialState,
     reducers: {
-        setTestWords(state, action: PayloadAction<IWordData[]>) {
+        setTestWords(state, action: PayloadAction<ITestWordData[]>) {
             state.words = action.payload;
         },
         setWordsCount(state, action: PayloadAction<number>) {
@@ -27,17 +23,25 @@ const testSlice = createSlice({
         },
         setAnswer(state, action: PayloadAction<[number, string]>) {
             const [id, answer] = action.payload;
-            state.answers[id] = answer;
+            const index = state.words.findIndex((word) => word.id === id);
+            state.words[index].answer = answer;
         },
         purgeTestData(state) {
-            state.answers = {};
             state.words = [];
             state.wordsCount = 0;
+        },
+        setResults(state, action: PayloadAction<ITestWordData[]>) {
+            state.words = action.payload;
         },
     },
 });
 
 export default testSlice.reducer;
 
-export const { setTestWords, setWordsCount, setAnswer, purgeTestData } =
-    testSlice.actions;
+export const {
+    setTestWords,
+    setWordsCount,
+    setAnswer,
+    purgeTestData,
+    setResults,
+} = testSlice.actions;

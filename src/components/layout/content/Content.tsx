@@ -6,6 +6,7 @@ import Dictionary from './dictionary/Dictionary';
 import Login from './login/Login';
 import Profile from './profile/Profile';
 import Test from './test/Test';
+import TestResults from './test/testResults/TestResults';
 
 const Content: React.FC = () => {
     const isAuth = useAppSelector((state) => state.userSlice.authData.isAuth);
@@ -37,6 +38,12 @@ const Content: React.FC = () => {
                 <Route
                     path='test'
                     element={isAuth ? <Test /> : <Navigate to='/login' />}
+                />
+                <Route
+                    path='test/results'
+                    element={
+                        isAuth ? <TestResults /> : <Navigate to='/login' />
+                    }
                 />
             </Routes>
         </div>

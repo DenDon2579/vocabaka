@@ -13,9 +13,9 @@ const Test: React.FC = () => {
     useEffect(() => {
         test.createTest();
 
-        return () => {
-            dispatch(purgeTestData());
-        };
+        // return () => {
+        //     dispatch(purgeTestData());
+        // };
     }, []);
 
     const testData = useAppSelector((state) => state.testSlice);
@@ -58,7 +58,7 @@ const Test: React.FC = () => {
                         className={classes.button}
                         onClick={() => {
                             test.endTest();
-                            navigate(`../dictionary`);
+                            navigate(`results`);
                         }}
                     >
                         Закончить тест

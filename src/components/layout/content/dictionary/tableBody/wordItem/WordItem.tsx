@@ -27,7 +27,7 @@ const WordItem: React.FC<IProps> = ({ wordData, delay, remove }) => {
                 className={`${classes.block} ${classes.level}`}
                 style={{ animationDelay: `${delay / 25}s` }}
             >
-                <span>{wordData.level}</span>
+                <span>{wordData.level}%</span>
             </div>
             <div className={classes.delete} onClick={() => remove(wordData.id)}>
                 ╳
