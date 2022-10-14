@@ -14,6 +14,13 @@ const Header: React.FC = () => {
         auth().then((userData) => dispatch(logIn(userData)));
     };
 
+    const signOut = () => {
+        dispatch(logOut());
+        localStorage.removeItem('uid');
+        localStorage.removeItem('name');
+        localStorage.removeItem('avatar');
+    };
+
     return (
         <div className={classes.header}>
             <div className={classes.main}>
@@ -35,10 +42,7 @@ const Header: React.FC = () => {
                             <img src={userData?.photoURL} alt='avatar' />
                             <span>{userData?.displayName} </span>
                         </Link>
-                        <b
-                            className={classes.logOut}
-                            onClick={() => dispatch(logOut())}
-                        >
+                        <b className={classes.logOut} onClick={signOut}>
                             ╳
                         </b>
                     </div>

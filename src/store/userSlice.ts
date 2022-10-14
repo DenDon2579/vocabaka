@@ -5,6 +5,7 @@ interface IState {
     userData: IUser | null;
     authData: {
         isAuth: boolean;
+        token: string | null;
     };
 }
 
@@ -12,6 +13,7 @@ const initialState: IState = {
     userData: null,
     authData: {
         isAuth: false,
+        token: null,
     },
 };
 
@@ -32,9 +34,10 @@ const userSlice = createSlice({
             state.userData = null;
             state.authData.isAuth = false;
         },
+        setToken(state, action: PayloadAction<string>) {},
     },
 });
 
 export default userSlice.reducer;
 
-export const { logIn, logOut } = userSlice.actions;
+export const { logIn, logOut, setToken } = userSlice.actions;

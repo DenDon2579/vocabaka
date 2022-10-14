@@ -10,6 +10,9 @@ const login = async (): Promise<IUser> => {
     const provider = new GoogleAuthProvider();
     const session = await signInWithPopup(auth, provider);
     const user = session.user;
+    localStorage.setItem('uid', user.uid);
+    localStorage.setItem('name', user.displayName ? user.displayName : '');
+    localStorage.setItem('avatar', user.photoURL ? user.photoURL : '');
     return {
         userID: user.uid,
         displayName: user.displayName ? user.displayName : '',

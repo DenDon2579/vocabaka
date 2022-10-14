@@ -6,6 +6,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    animation: enter 0.5s;
 }
 
 .title {
@@ -47,5 +48,16 @@
         border: 1px solid #5ea3a3;
         background-color: #faf9f9;
         color: #5ea3a3;
+    }
+}
+
+@keyframes enter {
+    0% {
+        opacity: 0;
+        scale: 0.9;
+    }
+    100% {
+        opacity: 1;
+        scale: 1;
     }
 }
