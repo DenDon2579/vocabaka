@@ -25,6 +25,10 @@ const TableBody: React.FC<IProps> = ({ words }) => {
         voc.deleteWord(id);
         voc.loadWords();
     };
+    const edit = (data: IWordData) => {
+        voc.editWord(data);
+        voc.loadWords();
+    };
     return (
         <div className={classes.table}>
             {!words?.length ? (
@@ -40,6 +44,7 @@ const TableBody: React.FC<IProps> = ({ words }) => {
                     key={i}
                     delay={arr.length - i}
                     remove={remove}
+                    edit={edit}
                 />
             ))}
         </div>

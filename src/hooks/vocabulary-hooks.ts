@@ -17,6 +17,14 @@ export const useVoc = () => {
                 this.loadWords();
             });
         },
+        editWord(data: IWordData) {
+            const updates: IUpdate = {};
+
+            updates[`/users/${uid}/words/${data.id}`] = data;
+            update(ref(database), updates).then(() => {
+                this.loadWords();
+            });
+        },
         loadWords() {
             get(child(ref(database), `users/${uid}/words`))
                 .then((snapshot) => {

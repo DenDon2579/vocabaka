@@ -7,7 +7,7 @@ import classes from './AddWordPopup.module.scss';
 const AddWordPopup: React.FC = () => {
     const [formData, setFormData] = useState({
         word: '',
-        translation: '',
+        translations: '',
         level: 0,
     });
     const voc = useVoc();
@@ -20,7 +20,7 @@ const AddWordPopup: React.FC = () => {
     const translateChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setFormData((prev) => ({
             ...prev,
-            translation: e.target.value.toLowerCase(),
+            translations: e.target.value.toLowerCase(),
         }));
     };
     const levelChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
@@ -29,16 +29,32 @@ const AddWordPopup: React.FC = () => {
 
     const formSubmitHandler = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        voc.addWord({ ...formData, id: Date.now() });
+        voc.addWord({
+            ...formData,
+            translations: splitTranslations(formData.translations),
+            id: Date.now(),
+        });
         dispatch(hidePopup());
         setFormData({
             word: '',
-            translation: '',
+            translations: '',
             level: 0,
         });
     };
 
     const dispatch = useAppDispatch();
+
+    const splitTranslations = (translations: string): string[] => {
+        return translations
+            .split(',')
+            .map((phrase) =>
+                phrase
+                    .split(' ')
+                    .filter((word) => word !== '')
+                    .join(' ')
+            )
+            .filter((word) => word);
+    };
 
     return (
         <div className={classes.overlay} onClick={() => dispatch(hidePopup())}>
@@ -61,7 +77,7 @@ const AddWordPopup: React.FC = () => {
                     <input
                         type='text'
                         className={classes.translate}
-                        value={formData.translation}
+                        value={formData.translations}
                         onChange={translateChangeHandler}
                         required
                     />

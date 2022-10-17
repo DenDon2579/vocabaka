@@ -34,7 +34,7 @@ export const useTest = () => {
 
             const results = testWords.map((word) => {
                 const wordData = { ...word };
-                if (word.answer === word.translation) {
+                if (word.translations.includes(word.answer)) {
                     wordData.isRight = true;
                     if (word.level <= 90) {
                         updates[`/users/${uid}/words/${word.id}/level`] =

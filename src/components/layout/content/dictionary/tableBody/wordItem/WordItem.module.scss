@@ -14,7 +14,7 @@
     background-color: #add2c9;
     height: 35px;
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
     box-shadow: 2px 2px 5px #5ea3a33a;
     span {
@@ -24,23 +24,105 @@
     }
     transition: all 0.25s;
     &:hover {
-        scale: 0.95;
         background-color: #5ea3a3;
         span {
+            color: #faf9f9;
+        }
+        .info {
+            color: #faf9f9;
+        }
+        .input {
             color: #faf9f9;
         }
     }
 }
 
 .word {
-    cursor: pointer;
 }
 
-// .translate {
-// }
+.translate {
+    position: relative;
+}
 
-// .level {
-// }
+.level {
+    input[type='range'] {
+        background: none;
+        border: none;
+        padding: 0;
+        height: 20px;
+        -webkit-appearance: none;
+        width: 60%;
+        margin: 0;
+        border-radius: 0;
+
+        &:focus {
+            &::-webkit-slider-runnable-track {
+                background: #522d3675;
+            }
+            &::-moz-range-track {
+                background: #522d3675;
+            }
+            &::-ms-track {
+                background: #522d3675;
+            }
+        }
+    }
+    input[type='range']:focus {
+        outline: none;
+    }
+    input[type='range']::-webkit-slider-runnable-track {
+        width: 100%;
+        height: 1px;
+        cursor: pointer;
+        background: #522d363f;
+        border-radius: 1px;
+    }
+    input[type='range']::-webkit-slider-thumb {
+        height: 15px;
+        width: 15px;
+        border-radius: 15px;
+        border: 1px solid #5ea3a3;
+        background: #faf9f9;
+        cursor: pointer;
+        -webkit-appearance: none;
+        margin-top: -7px;
+    }
+
+    input[type='range']::-moz-range-track {
+        width: 100%;
+        height: 1px;
+        cursor: pointer;
+        background: #522d363f;
+        border-radius: 1px;
+    }
+    input[type='range']::-moz-range-thumb {
+        height: 15px;
+        width: 15px;
+        border-radius: 15px;
+        border: 1px solid #5ea3a3;
+        background: #faf9f9;
+        cursor: pointer;
+    }
+    input[type='range']::-ms-track {
+        width: 100%;
+        height: 1px;
+        cursor: pointer;
+        background: #522d363f;
+        background: transparent;
+        border-color: transparent;
+        color: transparent;
+    }
+
+    input[type='range']::-ms-thumb {
+        margin-top: 20px;
+        height: 15px;
+        width: 15px;
+        border-radius: 15px;
+        border: 1px solid #5ea3a3;
+        background: #faf9f9;
+        cursor: pointer;
+    }
+}
 
 @keyframes enter {
     0% {
@@ -80,4 +162,77 @@
     &:hover {
         opacity: 1;
     }
+}
+
+.info {
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #5ea3a3;
+    font-size: 14px;
+    font-weight: 500;
+    opacity: 1;
+    transition: all 0.5s;
+}
+
+.otherWords {
+    box-sizing: border-box;
+    transition: all 0.25s;
+    position: absolute;
+    width: 85%;
+    height: auto;
+    background-color: #5ea3a3d2;
+    z-index: 20;
+    top: 0;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    padding: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    h2 {
+        font-size: 16px;
+        font-weight: 500;
+        text-align: center;
+        color: #fff;
+    }
+    span {
+        color: #fff;
+        text-align: center;
+        line-height: 25px;
+    }
+}
+
+.edit {
+    cursor: pointer;
+    position: absolute;
+    left: -22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #522d36;
+    font-size: 15px;
+    opacity: 0.2;
+    transition: all 0.5s;
+    &:hover {
+        opacity: 0.8;
+        rotate: 180deg;
+    }
+}
+
+.input {
+    border: none;
+    outline: none;
+    background: none;
+    text-align: center;
+    color: #522d36;
+    font-size: 15px;
+    border-bottom: 1px solid #522d36;
+    width: 85%;
 }

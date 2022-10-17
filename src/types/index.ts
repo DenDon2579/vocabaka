@@ -6,14 +6,14 @@ export interface IUser {
 
 export interface IWordData {
     word: string;
-    translation: string;
+    translations: string[];
     level: number;
     id: number;
 }
 
 export interface ITestWordData {
     word: string;
-    translation: string;
+    translations: string[];
     level: number;
     id: number;
     answer: string;

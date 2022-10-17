@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ITestWordData } from '../../../../../../types';
 import WordItem from '../../../dictionary/tableBody/wordItem/WordItem';
 import classes from './ResultItem.module.scss';
@@ -8,6 +8,7 @@ interface IProps {
 }
 
 const ResultItem: React.FC<IProps> = ({ word }) => {
+    const [isOtherWordsVisible, setIsOtherWordsVisible] = useState(false);
     const newLevel = word.level + (word.changes !== null ? word.changes : 0);
     const changes = word.changes !== null ? word.changes : 0;
 
@@ -29,9 +30,38 @@ const ResultItem: React.FC<IProps> = ({ word }) => {
                 </span>
             </div>
 
-            <div className={classes.block}>
+            <div className={`${classes.block} ${classes.rightAnswer}`}>
                 <span className={classes.property}>Верный ответ</span>
-                <span className={classes.value}>«{word.translation}»</span>
+                <span className={classes.value}>
+                    «{word.translations[0]}»
+                    {word.translations.length > 1 && (
+                        <span
+                            className={classes.info}
+                            onMouseEnter={() => setIsOtherWordsVisible(true)}
+                            onMouseLeave={() => setIsOtherWordsVisible(false)}
+                        >
+                            {' '}
+                            +{word.translations.length - 1}
+                        </span>
+                    )}
+                </span>
+                {word.translations.length > 1 && (
+                    <div
+                        className={`${classes.otherWords} ${
+                            word.isRight ? classes.up : classes.down
+                        }`}
+                        style={{
+                            opacity: isOtherWordsVisible ? '1' : '0',
+                        }}
+                    >
+                        <h2>Альтернативные переводы</h2>
+                        {word.translations.slice(1).map((word, i) => (
+                            <React.Fragment key={i}>
+                                <span>{word}</span>
+                            </React.Fragment>
+                        ))}
+                    </div>
+                )}
             </div>
 
             <div className={classes.block}>
