@@ -182,7 +182,7 @@
 
 .otherWords {
     box-sizing: border-box;
-    transition: all 0.25s;
+    animation: enter 0.25s;
     position: absolute;
     width: 85%;
     height: auto;

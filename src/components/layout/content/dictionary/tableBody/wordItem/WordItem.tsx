@@ -99,18 +99,18 @@ const WordItem: React.FC<IProps> = ({ wordData, delay, remove, edit }) => {
                         >
                             +{wordData.translations.length - 1}
                         </div>
-
-                        <div
-                            className={classes.otherWords}
-                            style={{ opacity: isOtherWordsVisible ? '1' : '0' }}
-                        >
-                            <h2>Альтернативные переводы</h2>
-                            {wordData.translations.slice(1).map((word, i) => (
-                                <React.Fragment key={i}>
-                                    <span>{word}</span>
-                                </React.Fragment>
-                            ))}
-                        </div>
+                        {isOtherWordsVisible && (
+                            <div className={classes.otherWords}>
+                                <h2>Альтернативные переводы</h2>
+                                {wordData.translations
+                                    .slice(1)
+                                    .map((word, i) => (
+                                        <React.Fragment key={i}>
+                                            <span>{word}</span>
+                                        </React.Fragment>
+                                    ))}
+                            </div>
+                        )}
                     </>
                 )}
             </div>
