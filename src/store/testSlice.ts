@@ -8,7 +8,7 @@ interface IState {
 
 const initialState: IState = {
     wordsCount: 0,
-    words: [],
+    words: [],   
 };
 
 const testSlice = createSlice({
