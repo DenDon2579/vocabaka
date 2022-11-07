@@ -25,3 +25,5 @@ export interface ITestWordData {
 export interface IUpdate {
   [key: string]: any;
 }
+
+export type testTypes = 'all' | 'fav';

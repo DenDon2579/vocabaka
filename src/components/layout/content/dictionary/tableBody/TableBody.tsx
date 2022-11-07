@@ -1,4 +1,4 @@
-import React, { DragEvent, MouseEvent, useEffect } from 'react';
+import React, { DragEvent, memo, MouseEvent, useEffect } from 'react';
 import {
   useAppDispatch,
   useAppSelector,
@@ -56,4 +56,4 @@ const TableBody: React.FC<IProps> = ({ words }) => {
     </>
   );
 };
-export default TableBody;
+export default memo(TableBody);

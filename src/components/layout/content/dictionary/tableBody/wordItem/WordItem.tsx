@@ -2,6 +2,7 @@ import React, {
   ChangeEvent,
   DragEvent,
   DragEventHandler,
+  memo,
   useState,
 } from 'react';
 import { useAppDispatch } from '../../../../../../hooks/redux-hooks';

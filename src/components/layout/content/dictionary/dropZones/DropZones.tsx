@@ -10,7 +10,6 @@ const DropZones: React.FC = () => {
   const starIcon = useAppSelector(
     (state) => state.vocabularySlice.visual.dragAndDrop.starIcon
   );
-  console.log(starIcon);
 
   const dropFav = (e: DragEvent<HTMLDivElement>) => {
     const wordId = e.dataTransfer.getData('wordId');
