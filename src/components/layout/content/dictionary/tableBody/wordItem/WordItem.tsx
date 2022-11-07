@@ -4,6 +4,7 @@ import React, {
   DragEventHandler,
   memo,
   useState,
+  useEffect,
 } from 'react';
 import { useAppDispatch } from '../../../../../../hooks/redux-hooks';
 import { useVoc } from '../../../../../../hooks/vocabulary-hooks';
@@ -37,6 +38,15 @@ const WordItem: React.FC<IProps> = ({
     translations: wordData.translations.join(', '),
     level: wordData.level,
   });
+  useEffect(
+    () =>
+      setFormData({
+        word: wordData.word,
+        translations: wordData.translations.join(', '),
+        level: wordData.level,
+      }),
+    [wordData]
+  );
   const dispatch = useAppDispatch();
   const setEditMode = (status: boolean) => {
     setIsEditMode(status);
