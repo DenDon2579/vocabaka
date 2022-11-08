@@ -25,8 +25,13 @@ const Test: React.FC = () => {
   };
 
   const testData = useAppSelector((state) => state.testSlice);
+  const wordsCount = useAppSelector((state) => state.userSlice.wordsCount);
   const sendAnswer = (id: number, answer: string) => {
     dispatch(setAnswer([id, answer]));
+  };
+  const endTest = () => {
+    test.endTest();
+    navigate(`results`);
   };
   if (!isTestStarted) {
     return (
@@ -37,7 +42,7 @@ const Test: React.FC = () => {
   } else {
     return (
       <div className={classes.wrapper}>
-        {testData.wordsCount < 10 ? (
+        {wordsCount < 10 ? (
           <>
             <h2 className={classes.title}>
               Недостаточно слов, чтобы начать тестирование
@@ -46,29 +51,16 @@ const Test: React.FC = () => {
               Минимально-необходимое количество: 10
             </span>
             <span className={classes.wordsCount}>
-              Слов в вашем словаре: {testData.wordsCount}
+              Слов в вашем словаре: {wordsCount}
             </span>
           </>
         ) : (
           <>
-            <h2 className={classes.title}>
-              Тест на владение словами и фразами
-            </h2>
-            <span className={classes.wordsCount}>
-              Слов в тесте: {testData.words.length}
-            </span>
-
-            <TestProcess sendAnswer={sendAnswer} words={testData.words} />
-
-            <button
-              className={classes.button}
-              onClick={() => {
-                test.endTest();
-                navigate(`results`);
-              }}
-            >
-              Закончить тест
-            </button>
+            <TestProcess
+              sendAnswer={sendAnswer}
+              words={testData.words}
+              endTest={endTest}
+            />
           </>
         )}
       </div>

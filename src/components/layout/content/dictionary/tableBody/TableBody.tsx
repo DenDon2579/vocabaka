@@ -17,6 +17,7 @@ const TableBody: React.FC<IProps> = ({ words }) => {
   const voc = useVoc();
   useEffect(() => {
     voc.loadWords();
+    voc.listenWordsCount();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const dispatch = useAppDispatch();

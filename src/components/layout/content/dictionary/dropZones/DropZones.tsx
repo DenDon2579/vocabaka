@@ -48,7 +48,7 @@ const DropZones: React.FC = () => {
     <div className={classes.dropZones}>
       <div
         className={classes.zone + ' ' + classes.favoriteZone}
-        onDragOver={(e) => dragOver(e, 'fav')}
+        onDragEnter={(e) => dragOver(e, 'fav')}
         onDragLeave={(e) => dragLeave(e, 'fav')}
         onDrop={dropFav}
         hover-drag={hover.fav ? 'true' : 'false'}

@@ -2,7 +2,7 @@ import { testTypes } from './../types/index';
 import { child, get, increment, ref, update } from 'firebase/database';
 import { database } from '../firebase';
 import { randomInteger } from '../funcs';
-import { setResults, setTestWords, setWordsCount } from '../store/testSlice';
+import { setResults, setTestWords } from '../store/testSlice';
 import { ITestWordData, IUpdate, IWordData } from '../types';
 import { useAppDispatch, useAppSelector } from './redux-hooks';
 import { useVoc } from './vocabulary-hooks';
@@ -22,7 +22,7 @@ export const useTest = () => {
             const wordsCount = snapshot.val();
             const test = composeTest(words, wordsCount, type);
 
-            dispatch(setWordsCount(wordsCount));
+            // dispatch(setWordsCount(wordsCount));
             dispatch(setTestWords(test));
           }
         })

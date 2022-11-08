@@ -27,8 +27,7 @@
   &:hover {
     box-shadow: 31px 31px 62px #eeeded, -31px -31px 62px #ffffff;
     border-color: #488c8f4f;
-
-    transform: translateY(-10px) translateX(-10px);
+    translate: -10px -10px;
   }
   &:last-child {
     animation: enterRight 0.5s;
