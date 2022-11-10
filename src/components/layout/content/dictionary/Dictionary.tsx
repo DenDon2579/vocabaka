@@ -20,7 +20,7 @@ const Dictionary: React.FC = () => {
   const [isUpSort, setIsUpSort] = useState<boolean>(true);
   const [mode, setMode] = useState<'all' | 'fav'>('all');
   const dispatch = useAppDispatch();
-
+  const [searchQuery, setSeatchQuery] = useState<string>('');
   const toggleSort = () => {
     setIsUpSort((prev) => !prev);
   };
@@ -45,6 +45,7 @@ const Dictionary: React.FC = () => {
         setWordList(words);
       }
       sort();
+      search(searchQuery);
     }
   };
 
@@ -54,8 +55,7 @@ const Dictionary: React.FC = () => {
 
   useEffect(renderNewWords, [words]);
 
-  const search = (e: ChangeEvent<HTMLInputElement>) => {
-    const query = e.target.value;
+  const search = (query: string) => {
     if (words) {
       if (query) {
         setWordList(
@@ -75,6 +75,11 @@ const Dictionary: React.FC = () => {
       }
       sort();
     }
+  };
+
+  const queryChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+    setSeatchQuery(e.target.value);
+    search(e.target.value);
   };
 
   const toggleMode = () => {
@@ -103,7 +108,7 @@ const Dictionary: React.FC = () => {
           </div>
           <input
             className={classes.search}
-            onChange={search}
+            onChange={queryChangeHandler}
             placeholder='поиск'
           />
         </div>
