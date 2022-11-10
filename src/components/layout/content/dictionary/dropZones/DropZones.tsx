@@ -22,6 +22,8 @@ const DropZones: React.FC = () => {
   };
 
   const dragOver = (e: DragEvent<HTMLDivElement>, type: 'fav' | 'del') => {
+    console.log('qwe');
+
     e.preventDefault();
 
     switch (type) {
@@ -48,7 +50,7 @@ const DropZones: React.FC = () => {
     <div className={classes.dropZones}>
       <div
         className={classes.zone + ' ' + classes.favoriteZone}
-        onDragEnter={(e) => dragOver(e, 'fav')}
+        onDragOver={(e) => dragOver(e, 'fav')}
         onDragLeave={(e) => dragLeave(e, 'fav')}
         onDrop={dropFav}
         hover-drag={hover.fav ? 'true' : 'false'}
