@@ -1,49 +1,51 @@
 .card {
-    width: auto;
-    height: auto;
-    border-radius: 10px;
-    border: 1px solid #5ea3a3;
-    margin: 10px;
-    display: flex;
-    flex-direction: column;
+  width: auto;
+  height: auto;
+  border-radius: 10px;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #488c8f4f;
+  background: #faf9f9;
+  box-shadow: 7px 7px 19px #f3f2f2, -7px -7px 19px #ffffff;
 }
 
 .top {
-    box-sizing: border-box;
-    padding: 10px;
-    width: 100%;
-    height: 110px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
-    border-bottom: 1px solid #5ea3a3;
-    span {
-        font-size: 18px;
-    }
-    .text {
-    }
-    .word {
-        font-weight: 500;
-    }
-    .lang {
-    }
+  box-sizing: border-box;
+  padding: 10px;
+  width: 100%;
+  height: 110px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  border-bottom: 1px solid #488c8f4f;
+  span {
+    font-size: 18px;
+  }
+  .text {
+  }
+  .word {
+    font-weight: 500;
+  }
+  .lang {
+  }
 }
 
 .bot {
-    width: 100%;
-    height: 50%;
+  width: 100%;
+  height: 50%;
 }
 
 .input {
-    border: none;
-    box-sizing: border-box;
-    width: 100%;
-    height: 38px;
-    background: none;
-    font-size: 18px;
-    outline: none;
-    padding: 10px;
-    text-align: center;
-    transition: all 0.25s;
+  border: none;
+  box-sizing: border-box;
+  width: 100%;
+  height: 38px;
+  background: none;
+  font-size: 18px;
+  outline: none;
+  padding: 10px;
+  text-align: center;
+  transition: all 0.25s;
 }

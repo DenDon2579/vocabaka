@@ -11,12 +11,14 @@
 .block {
   animation: enterWord 0.5s;
   border-radius: 10px;
-  background-color: #add2c9;
+  // background-color: #add2c9;
   height: 35px;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  box-shadow: 2px 2px 5px #5ea3a33a;
+  border: 1px solid #488c8f4f;
+  background: #faf9f9;
+  box-shadow: 7px 7px 19px #f3f2f2, -7px -7px 19px #ffffff;
   span {
     color: #522d36;
     font-size: 14px;
@@ -24,20 +26,21 @@
   }
   transition: all 0.25s;
   &:hover {
-    background-color: #5ea3a3;
+    box-shadow: 31px 31px 62px #eeeded, -31px -31px 62px #ffffff;
+    translate: 0 -8px;
+    z-index: 999;
+    scale: 1.1;
     span {
-      color: #faf9f9;
     }
     .info {
-      color: #faf9f9;
     }
     .input {
-      color: #faf9f9;
     }
   }
 }
 
 .word {
+  cursor: grab;
 }
 
 .translate {
@@ -186,7 +189,7 @@
   position: absolute;
   width: 85%;
   height: auto;
-  background-color: #5ea3a3d2;
+  background-color: #faf9f9;
   z-index: 20;
   top: 0;
   display: flex;
@@ -196,14 +199,15 @@
   padding: 10px;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
+  color: #522d36;
+  border: 1px solid #488c8f4f;
+  box-shadow: 31px 31px 62px #eeeded, -31px -31px 62px #ffffff;
   h2 {
     font-size: 16px;
     font-weight: 500;
     text-align: center;
-    color: #fff;
   }
   span {
-    color: #fff;
     text-align: center;
     line-height: 25px;
   }
